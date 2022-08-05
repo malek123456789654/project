@@ -1,0 +1,23 @@
+const { body, validationResult } = require("express-validator");
+const res = require("express/lib/response");
+
+exports.register = [
+  body("name", "name must be valid"),
+  body("email", "please add a valid email").isEmail(),
+  body("password", "password must be at least 6 caracters").isLength({
+    min: 6,
+  }),
+];
+exports.login = [
+  body("email", "please add a valid email").isEmail(),
+  body("password", "password must be at least 6 caracters").isLength({
+    min: 6,
+  }),
+];
+exports.validation = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  next();
+};

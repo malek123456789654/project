@@ -1,0 +1,27 @@
+{
+  "name": "astronomy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "Data:import": "node backend/SeederScript.js",
+    "server": "cd backend && npx nodemon index.js",
+    "client": "cd client && npm run start",
+    "server-install": "npm install",
+    "client-install": "cd client && npm install",
+    "install-all": "concurrently \"npm run server-install\" \"npm run client-install\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+   
+    "concurrently": "^7.1.0",
+    "react-icons": "^4.3.1"
+   
+  }
+}
